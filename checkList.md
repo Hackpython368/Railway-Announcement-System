@@ -9,8 +9,8 @@
 - [x] Create GitHub repository
 
 ### 🗓️ Day 2: Flowchart Design
-- [ ] Identify system modules (Input, Processing, Output)
-- [ ] Design and save the flowchart diagram
+- [X] Identify system modules (Input, Processing, Output)
+- [X] Design and save the flowchart diagram
 
 ### 🗓️ Day 3: Input Module
 - [ ] Create functionality to input train/station/time data
