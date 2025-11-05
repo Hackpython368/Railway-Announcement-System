@@ -13,8 +13,8 @@
 - [X] Design and save the flowchart diagram
 
 ### 🗓️ Day 3: Input Module
-- [ ] Create functionality to input train/station/time data
-- [ ] Validate all user inputs
+- [X] Create functionality to input train/station/time data
+- [X] Validate all user inputs
 
 ### 🗓️ Day 4: Processing Module
 - [ ] Write logic to generate announcements
