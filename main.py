@@ -1,15 +1,26 @@
-import pyttsx3
 import os
-import playsound
+from pydub import AudioSegment
+import gtts
 
-def textTospeech(*text):
-    engine = pyttsx3.init()
-    engine.setProperty("rate",105)
-    engine.setProperty("voice",0)
-    engine.say(text[0])
-    engine.runAndWait()
+def arrangeList():
+    pass
 
-    print(text)
+
+def audioGenerator(lst):
+    for i in range(len(lst)):
+        gtts.gTTS(text=lst[i],lang="hi").save(f"AudioFiles/GeneratedFiles/{i}.mp3")
+
+def stichAnnouncement(lst):
+    pass
+
 
 if __name__=="__main__":
-    textTospeech("platform")
+    train_no = list(input("Enter Train Number : "))
+    train_from = input("Enter Train From : ")
+    train_via = input("Enter Train Via : ")
+    train_to = input("Enter Train to :")
+    platform_no = input("Enter Platform Number :")
+    train_no = "".join(i+" " for i in train_no)
+    lst = [train_no,train_from,train_via,train_to,platform_no]
+    audioGenerator(lst)
+
