@@ -24,7 +24,7 @@ def stichAnnouncement(lst):
     final_audio._spawn(final_audio.raw_data,overrides={
         "frame_rate": int(final_audio.frame_rate * 0.8)
     })
-    final_audio.export("o.mp3",format="mp3")
+    final_audio.export("static/o.mp3",format="mp3")
 
 
 
