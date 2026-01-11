@@ -3,7 +3,7 @@
 ## 📌 Project Information
 
 * **Project Name:** Railway Announcement System
-* **Version:** 1
+* **Version:** 2
 * **Project Type:** Web-based GUI Application
 
 ---
