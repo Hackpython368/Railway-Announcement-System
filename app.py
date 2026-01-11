@@ -1,5 +1,5 @@
 from flask import Flask ,render_template,request
-from main import audioGenerator,stichAnnouncement
+from Modules.main import audioGenerator,stichAnnouncement
 
 app = Flask(__name__)
 
@@ -13,7 +13,8 @@ def home():
         Train_To = request.form["train_to"]
         Platform_Number = request.form["platform_number"]
         Train_no = " ".join(Train_no)
-        stichAnnouncement(audioGenerator([Train_no,Train_from,Train_Via,Train_To,Platform_Number]))
+        audioGenerator([Train_no,Train_from,Train_Via,Train_To,Platform_Number])
+        stichAnnouncement()
         success = True
     return render_template("home.html",success = success)
 
