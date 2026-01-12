@@ -1,83 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Railways Announcement System</title>
-
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Railway Announcement System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
+        /* ---------- RESET ---------- */
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #a2d6bf;
+        }
+
+        /* ---------- MOBILE FIRST ---------- */
+        .page {
             min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
         }
 
         .card {
-            border-radius: 15px;
+            width: 100%;
+            background: #ffffff;
+            padding: 1.2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.6rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.7rem;
+            font-size: 1rem;
+            background: #0d6efd;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .success {
+            background: #d1e7dd;
+            color: #0f5132;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        hr {
+            margin: 1.2rem 0;
+        }
+
+        /* ---------- DESKTOP OPTIONAL ---------- */
+        @media (min-width: 768px) {
+            .card {
+                max-width: 420px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        <div class="col-md-6">
-            <div class="card shadow-lg p-4">
-                <h3 class="text-center mb-4">
-                    🚆 Railway Announcement System
-                </h3>
 
-                {% if success %}
-                <div class="alert alert-success text-center">
-                    Announcement Generated for Train {{ train_number }}
-                </div>
-                {% endif %}
+<div class="page">
+    <div class="card">
 
-                <form method="POST">
-                    <div class="mb-3">
-                        <label class="form-label">Train Number</label>
-                        <input type="text" class="form-control" name="train_number" required>
-                    </div>
+        <h3>🚆 Railway Announcement System</h3>
 
-                    <div class="mb-3">
-                        <label class="form-label">From Station</label>
-                        <input type="text" class="form-control" name="train_from" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Via Station(s)</label>
-                        <input type="text" class="form-control" name="train_via">
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">To Station</label>
-                        <input type="text" class="form-control" name="train_to" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Platform Number</label>
-                        <input type="number" class="form-control" name="platform_number" required>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary w-100">
-                        Generate Announcement
-                    </button>
-                </form>
-                {% if success %}
-                <hr>
-                <div class="text-center">
-                    <h5>🔊 Announcement Ready</h5>
-                    <audio controls class="w-100 mt-2">
-                        <source src="{{ url_for('static',filename='o.mp3')}}" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
-                </div>
-                {% endif %}
-
-            </div>
+        {% if success %}
+        <div class="success">
+            Announcement Generated for Train {{ train_number }}
         </div>
-    </div>
-</body>
+        {% endif %}
 
+        <form method="POST">
+            <label>Train Number</label>
+            <input type="number" name="train_number" required inputmode="numeric" pattern="[0-9]*">
+
+            <label>From Station</label>
+            <input type="text" name="train_from" required pattern="[A-Za-z\s]+" title="Only letters allowed">
+
+            <label>Via Station(s)</label>
+            <input type="text" name="train_via" pattern="[A-Za-z\s]+" title="Only letters allowed">
+
+            <label>To Station</label>
+            <input type="text" name="train_to" required pattern="[A-Za-z\s]+" title="Only letters allowed">
+
+            <label>Platform Number</label>
+            <input type="number" name="platform_number" required>
+
+            <button type="submit">Generate Announcement</button>
+        </form>
+
+        {% if success %}
+        <hr>
+        <h4 style="text-align:center;">🔊 Announcement Ready</h4>
+        <audio controls>
+            <source src="{{ url_for('static',filename='final_announcement.mp3') }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        {% endif %}
+
+    </div>
+</div>
+
+</body>
 </html>
