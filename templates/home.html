@@ -113,7 +113,7 @@
 
         <form method="POST">
             <label>Train Number</label>
-            <input type="number" name="train_number" required inputmode="numeric" pattern="[0-9]*">
+            <input type="text" name="train_number" required inputmode="numeric" pattern="[0-9]*" minlength="5" maxlength="5">
 
             <label>From Station</label>
             <input type="text" name="train_from" required pattern="[A-Za-z\s]+" title="Only letters allowed">
@@ -125,7 +125,7 @@
             <input type="text" name="train_to" required pattern="[A-Za-z\s]+" title="Only letters allowed">
 
             <label>Platform Number</label>
-            <input type="number" name="platform_number" required>
+            <input type="text" name="platform_number" required maxlength="2" minlength="1">
 
             <button type="submit">Generate Announcement</button>
         </form>
