@@ -125,7 +125,7 @@
             <input type="text" name="train_to" required pattern="[A-Za-z\s]+" title="Only letters allowed">
 
             <label>Platform Number</label>
-            <input type="text" name="platform_number" required maxlength="2" minlength="1">
+            <input type="text" name="platform_number" required inputmode="numeric" pattern="[0-9]*" maxlength="2" minlength="1">
 
             <button type="submit">Generate Announcement</button>
         </form>
